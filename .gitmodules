@@ -1,0 +1,12 @@
+[submodule "terraform-eks-cluster"]
+	path = terraform-eks-cluster
+	url = git@github.com:mskymoore/terraform-eks-cluster.git
+[submodule "shtl.ink-kubernetes"]
+	path = shtl.ink-kubernetes
+	url = git@github.com:mskymoore/shtl.ink-kubernetes.git
+[submodule "shtl.ink"]
+	path = shtl.ink
+	url = git@github.com:mskymoore/shtl.ink.git
+[submodule "api.shtl.ink"]
+	path = api.shtl.ink
+	url = git@github.com:mskymoore/api.shtl.ink.git
