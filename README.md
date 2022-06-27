@@ -41,17 +41,29 @@ This repository tracks the commits of deployed infrastructure, orchestration, an
       terraform apply
       ```
 **2. Build the docker images.**  
-```bash
-# in a new terminal
-cd api.shtl.ink
-docker build -t user/repo:tag .
-docker push user/repo:tag
-cd ../shtl.ink
-docker build -t user/repo:tag
-docker push user/repo:tag
-```  
+   1. Create the env.local file for the frontend image
+        ```bash
+        touch shtl.ink/env.local
+        ```
+   2. Populate the file, contents should be like the following
+        ```bash
+        APP_NAME=shtl.ink
+        COOKIE_DOMAIN=.shtl.ink
+        BASE_URL=https://shtl.ink
+        API_BASE_URL=https://api.shtl.ink
+        ```
+   3. Build and push the images
+        ```bash
+        # in a new terminal
+        cd api.shtl.ink
+        docker build -t user/repo:tag .
+        docker push user/repo:tag
+        cd ../shtl.ink
+        docker build -t user/repo:tag
+        docker push user/repo:tag
+        ```  
 **3. Deploy the kubernetes into the cluster.**  
-   1. Update ```shtl.ink-kubernetes/shtl-ink/0500_shtl-ink_deployment.yml``` with the appropriate images and tags that were pushed to dockerhub in the previous step.
+   1. Update ```shtl.ink-kubernetes/shtl-ink/0500_shtl-ink_deployment.yml``` with the appropriate images and tags that were pushed to dockerhub in the previous step. It's important that the urls configured in this deployment file, match what is configured for the front end image build.
    2. Check that the terraform has finished applying, once it's applied move to the next step.
    3. Follow the steps in ```shtl.ink-kubernetes/Readme.md```
 
