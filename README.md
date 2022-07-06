@@ -59,7 +59,7 @@ This repository tracks the commits of deployed infrastructure, orchestration, an
         docker build -t user/repo:tag .
         docker push user/repo:tag
         cd ../shtl.ink
-        docker build -t user/repo:tag
+        docker build -t user/repo:tag .
         docker push user/repo:tag
         ```  
 **3. Deploy the kubernetes into the cluster.**  
